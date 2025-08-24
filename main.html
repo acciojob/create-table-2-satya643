@@ -26,7 +26,7 @@
       text-align: center;
     }
 
-    button {
+    input[type="button"] {
       padding: 10px 20px;
       font-size: 16px;
       cursor: pointer;
@@ -36,7 +36,7 @@
       border-radius: 5px;
     }
 
-    button:hover {
+    input[type="button"]:hover {
       background-color: #0056b3;
     }
   </style>
@@ -45,7 +45,7 @@
 
   <h1>Dynamic Table Creator</h1>
 
-  <button id="createTableBtn">Create the table</button>
+  <input type="button" id="createTableBtn" value="Create the table">
 
   <table id="myTable"></table>
 
@@ -54,34 +54,27 @@
       const table = document.getElementById('myTable');
       table.innerHTML = ''; // Clear previous table
 
-      // Prompt for rows
       const rowsInput = prompt('Input number of rows');
       const rows = parseInt(rowsInput, 10);
-
       if (isNaN(rows) || rows <= 0) {
         alert('Invalid number of rows. Please enter a positive number.');
         return;
       }
 
-      // Prompt for columns
       const colsInput = prompt('Input number of columns');
       const cols = parseInt(colsInput, 10);
-
       if (isNaN(cols) || cols <= 0) {
         alert('Invalid number of columns. Please enter a positive number.');
         return;
       }
 
-      // Generate table
       for (let i = 0; i < rows; i++) {
         const tr = document.createElement('tr');
-
         for (let j = 0; j < cols; j++) {
           const td = document.createElement('td');
           td.textContent = `Row-${i} Column-${j}`;
           tr.appendChild(td);
         }
-
         table.appendChild(tr);
       }
     }
